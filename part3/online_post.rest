@@ -1,0 +1,7 @@
+POST https://fullstack-aw4u.onrender.com/api/persons
+content-type: application/json
+
+{
+    "name": "Test user",
+    "number": "12345"
+}
