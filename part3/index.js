@@ -3,7 +3,6 @@ const express = require('express')
 const Person = require('./models/person')
 
 const morgan = require('morgan')
-const mongoose = require('mongoose')
 
 const app = express()
 
@@ -14,9 +13,9 @@ app.listen(PORT, () => {
 
 morgan.token('body', function (req) { return JSON.stringify(req.body) })
 
-app.use(morgan(':method :url :status :response-time ms :body'))
 app.use(express.static('dist'))
 app.use(express.json())
+app.use(morgan(':method :url :status :response-time ms :body'))
 
 app.get('/api/persons', (request, response) => {
     Person.find({}).then(persons => {
@@ -25,9 +24,9 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.get('/info', (request, response) => {
-    const amount = Person.countDocuments({}).then(count => {
+    Person.countDocuments({}).then(count => {
         response.send(`
-            <p>Phonebook has info for ${amount} people</p>
+            <p>Phonebook has info for ${count} people</p>
             <p>${new Date()}</p>
             `)
     })
@@ -36,8 +35,8 @@ app.get('/info', (request, response) => {
 app.get('/api/persons/:id', (request, response, next) => {
     Person.findById(request.params.id)
         .then(result => {
-            if (person) {
-                response.json(person)
+            if (result) {
+                response.json(result)
             } else {
                 response.status(404).end()
             }
@@ -60,9 +59,10 @@ app.post('/api/persons', (request, response) => {
         number: body.number,
     })
 
-    person.save().then(savedPerson => {
-        response.json(savedPerson)
-    })
+    person.save()
+        .then(savedPerson => {
+            response.json(savedPerson)
+        })
 })
 
 app.delete('/api/persons/:id', (request, response, next) => {
@@ -79,8 +79,9 @@ app.put('/api/persons/:id', (request, response, next) => {
     Person.findById(request.params.id)
         .then(person => {
             if (!person) {
-                response.status(404).end()
+                return response.status(404).end()
             }
+
             person.name = name
             person.number = number
 
