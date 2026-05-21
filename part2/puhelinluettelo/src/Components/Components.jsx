@@ -34,8 +34,7 @@ export const PersonForm = (props) => {
 }
 
 export const Person = ({ person, destroy }) => <li>
-    {person.name}
-    {person.number}
+    {person.name} {person.number} 
     <button onClick={() => destroy(person.id)}>delete</button>
     </li>
 

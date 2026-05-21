@@ -81,6 +81,20 @@ const App = () => {
           setNewName('')
           setNewNumber('')
         })
+
+        .catch(error => {
+          setNotification({
+            message: error.response.data.error,
+            type: 'failure'
+          })
+
+          setTimeout(() => {
+            setNotification({ message: null, type: null })
+          }, 5000)
+
+          setNewName('')
+          setNewNumber('')
+        })
     }
   }
 
@@ -105,6 +119,7 @@ const App = () => {
 
   const destroy = (id) => {
     if (window.confirm('Are you sure?')) {
+      const personToDelete = persons.find(p => p.id === id)
 
       personService
         .destroy(id)
@@ -112,7 +127,7 @@ const App = () => {
         .then(removedPerson => {
           setPersons(prev => prev.filter(p => p.id !== id))
           setNotification({
-            message: `Deleted ${removedPerson.name}`,
+            message: `Deleted ${personToDelete.name}`,
             type: 'success'
           })
 
