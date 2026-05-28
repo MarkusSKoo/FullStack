@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hdHRpTSIsImlkIjoiNmExN2RhZGRlODU3Yjc4NTdiZjllODIyIiwiaWF0IjoxNzc5OTU0NDA5LCJleHAiOjE3Nzk5NTgwMDl9.q6vgdWYFqRSOaLueWzmimILOa91EOWI6R41c_kmps08
+
+{
+  "title": "Fullstack Open",
+  "author": "Matti Meikäläinen",
+  "url": "https://fullstackopen.com",
+  "likes": 10,
+  "userId": "6a16de2dd7a40a4564a2fdf8"
+}
