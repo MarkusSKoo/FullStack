@@ -1,6 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hdHRpTSIsImlkIjoiNmExN2RhZGRlODU3Yjc4NTdiZjllODIyIiwiaWF0IjoxNzc5OTU0NDA5LCJleHAiOjE3Nzk5NTgwMDl9.q6vgdWYFqRSOaLueWzmimILOa91EOWI6R41c_kmps08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hdHRpTSIsImlkIjoiNmExN2RhZGRlODU3Yjc4NTdiZjllODIyIiwiaWF0IjoxNzgwMzE2MTMxLCJleHAiOjE3ODAzMTk3MzF9.EaYeLylibetotxUczoC3MZhgTr0Cf3bcQHg_2Cti11s
 
 {
   "title": "Fullstack Open",
